@@ -1024,7 +1024,7 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
     <article class="card" data-reveal>
       <div class="card__top"><span class="card__domain">Humanoids · Teleoperation</span><span class="card__idx">P / 03</span></div>
       <h3>Unitree G1 Teleoperation via Meta Quest 2</h3>
-      <p>Bridging a $300 consumer VR headset to a $16K humanoid: real-time mapping of 6-DoF Quest controller poses to Unitree G1 joint configurations in MuJoCo, with feasibility constraints for stable contact-rich motion. Built as demonstration-data infrastructure for VLA and humanoid foundation-model training.</p>
+      <p>Deployed Unitree's open-source teleoperation stack driving a G1 humanoid in MuJoCo at 30 Hz from a $300 consumer headset. I built the enabling layer — WSL2 mirrored networking, the SSL certificates WebXR requires, the C++ MuJoCo build and launch orchestration — and debugged latency and connection recovery stage by stage across the WebXR → WebRTC → IK → DDS → simulator chain. Built as demonstration-data infrastructure for imitation learning.</p>
       <div class="card__metrics">
         <span class="chip">6-DoF pose mapping</span>
         <span class="chip">VLA data collection</span>
