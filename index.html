@@ -941,12 +941,12 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
       <div class="phase__node">05</div>
       <div class="phase__rail"><span class="tag">CURRENT</span> · Surgical Robotics Research <span class="phase__pill">NOW</span></div>
       <h3>Where the machine meets the body <span>· Rolling-contact joints &amp; surgical IK</span></h3>
-      <p>My core research: rolling-contact joints with Kevlar-49 tendons that crush conventional revolute architectures, controlled by pole placement and a Luenberger observer (published, IEEE 2024). Alongside it, SE(3) inverse kinematics with remote-center-of-motion constraints in MuJoCo, and Quest-2 → Unitree G1 teleoperation — building toward foundation-model and VLA-driven manipulation.</p>
+      <p>My core research: rolling-contact joints with Kevlar-49 tendons that crush conventional revolute architectures, controlled by pole placement and a Luenberger observer (published, IEEE 2024). Alongside it, SE(3) inverse kinematics with a gaze constraint in MuJoCo, and Quest-2 → Unitree G1 teleoperation — building toward foundation-model and VLA-driven manipulation.</p>
       <div class="phase__metrics">
         <span class="chip">Peak torque <b>−73%</b></span>
         <span class="chip">Tracking error <b>−64%</b></span>
         <span class="chip">Friction <b>20×↓</b></span>
-        <span class="chip">RCM-IK · MuJoCo · VLA · teleoperation</span>
+        <span class="chip">Gaze IK · MuJoCo · VLA · teleoperation</span>
       </div>
     </div>
   </div>
@@ -1007,15 +1007,15 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
 
     <article class="card" data-reveal>
       <div class="card__top"><span class="card__domain">Surgical · Open Source</span><span class="card__idx">P / 02</span></div>
-      <h3>Surgical Endoscope RCM-IK in MuJoCo</h3>
-      <p>A custom SE(3) Newton-Raphson inverse-kinematics solver driving a 7-DoF Franka Panda endoscope, enforcing a remote-center-of-motion constraint so the tool pivots through a fixed trocar — the core requirement of minimally invasive surgery. Damped least-squares on the Lie group, with singularity handling and a full physics-validation pipeline.</p>
+      <h3>Surgical Endoscope Gaze IK in MuJoCo</h3>
+      <p>A from-scratch SE(3) Newton-Raphson IK solver driving a 7-DoF Franka Panda in MuJoCo along a circular endoscope trajectory while aiming the camera at a fixed tissue target (a gaze constraint), with null-space redundancy resolution. Tracking is sub-millimetre for ~80% of the lap, then diverges as q1 reaches its joint limit.</p>
       <div class="card__metrics">
         <span class="chip">SE(3) Lie-group IK</span>
-        <span class="chip">RCM constraint</span>
+        <span class="chip">Gaze constraint</span>
         <span class="chip">Franka Panda</span>
       </div>
       <div class="card__tags"><span>MuJoCo</span><span>Newton-Raphson Jacobian</span><span>Damped least-squares</span><span>Python</span></div>
-      <a class="card__link" href="https://github.com/pradeepsuryad/surgical-endoscope-RMC-IK" target="_blank" rel="noopener">
+      <a class="card__link" href="https://github.com/pradeepsuryad/surgical-endoscope-gaze-ik" target="_blank" rel="noopener">
         View on GitHub
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
       </a>
@@ -1223,7 +1223,7 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
 
       <h3 class="rcol__h rcol__h--gap">Open-Source Robotics</h3>
       <div class="repos">
-        <a class="repo" href="https://github.com/pradeepsuryad/surgical-endoscope-RMC-IK" target="_blank" rel="noopener">surgical-endoscope-RMC-IK</a>
+        <a class="repo" href="https://github.com/pradeepsuryad/surgical-endoscope-gaze-ik" target="_blank" rel="noopener">surgical-endoscope-gaze-ik</a>
         <a class="repo" href="https://github.com/pradeepsuryad/Xr_quest2_Unitree" target="_blank" rel="noopener">Xr_quest2_Unitree</a>
         <a class="repo" href="https://github.com/pradeepsuryad/Autonomous-Endoscope-Assistant-Active-Vision-" target="_blank" rel="noopener">Autonomous-Endoscope-Assistant</a>
         <a class="repo" href="https://github.com/pradeepsuryad/heart-beat-tracker" target="_blank" rel="noopener">heart-beat-tracker</a>
