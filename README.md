@@ -11,13 +11,14 @@ Personal portfolio site — **Pradeep Surya Dadi, Surgical & Humanoid Robotics E
 | **Languages** | HTML, CSS, JavaScript (ES6) — all inline |
 | **3D** | [Three.js](https://threejs.org) r128 via cdnjs |
 | **Build step** | none |
-| **Dependencies** | none to install — no npm, no bundler, no framework |
+| **Dependencies** | nothing to install — no npm, no bundler, no framework; the page loads Google Fonts and Three.js from CDNs |
 | **Hosting** | GitHub Pages, legacy source: `main` branch, root (`/`) |
 
-The entire site is a single self-contained [index.html](index.html) (~110 KB):
+The entire site is a single [index.html](index.html) (~110 KB):
 markup, styles, animation, and the Three.js scene all live in one file. That's
-deliberate — it makes the site trivially portable and means a deploy is just a
-`git push`, with no build output to reconcile.
+deliberate — a deploy is just a
+`git push`, with no build output to reconcile. Google Fonts and the Three.js
+library itself are loaded from CDNs at runtime.
 
 ## Sections
 
@@ -49,7 +50,7 @@ git commit -m "Update portfolio"
 git push origin main
 ```
 
-GitHub Pages rebuilds automatically; the change is usually live within a minute.
+GitHub Pages rebuilds automatically after each push.
 
 ## Related
 
