@@ -802,7 +802,7 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
     <p class="hero__tag">
       I take robots from <b>concept to contact</b> — high-density PCBs and real-time
       firmware, perception and SLAM, simulation and precision control — and prove them on
-      real hardware, from surgical manipulators to Boston Dynamics SPOT and the Unitree&nbsp;G1.
+      real hardware, from surgical manipulators to Boston Dynamics SPOT.
     </p>
     <div class="hero__cta">
       <a class="btn btn--primary" href="#work">
@@ -840,8 +840,6 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
     <span class="platforms__lead">Built &amp; deployed on</span>
     <div class="platforms__list">
       <span>Boston Dynamics SPOT</span>
-      <span>Unitree G1 Humanoid</span>
-      <span>Franka Panda</span>
       <span>7-DoF Tendon Manipulator</span>
       <span>Meta Quest 2</span>
       <span>STM32 · Teensy · ESP32</span>
@@ -941,12 +939,12 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
       <div class="phase__node">05</div>
       <div class="phase__rail"><span class="tag">CURRENT</span> · Surgical Robotics Research <span class="phase__pill">NOW</span></div>
       <h3>Where the machine meets the body <span>· Rolling-contact joints &amp; surgical IK</span></h3>
-      <p>My core research: rolling-contact joints with Kevlar-49 tendons that crush conventional revolute architectures, controlled by pole placement and a Luenberger observer (published, IEEE 2024). Alongside it, SE(3) inverse kinematics with a gaze constraint in MuJoCo, and Quest-2 → Unitree G1 teleoperation — building toward foundation-model and VLA-driven manipulation.</p>
+      <p>My core research: rolling-contact joints with Kevlar-49 tendons that crush conventional revolute architectures, controlled by pole placement and a Luenberger observer. Alongside it, SE(3) inverse kinematics with a gaze constraint in MuJoCo, and Quest-2 → Unitree G1 teleoperation — building toward foundation-model and VLA-driven manipulation.</p>
       <div class="phase__metrics">
         <span class="chip">Peak torque <b>−73%</b></span>
         <span class="chip">Tracking error <b>−64%</b></span>
         <span class="chip">Friction <b>20×↓</b></span>
-        <span class="chip">Gaze IK · MuJoCo · VLA · teleoperation</span>
+        <span class="chip">Gaze IK · MuJoCo · teleoperation</span>
       </div>
     </div>
   </div>
@@ -966,7 +964,7 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
     <article class="card card--wide card--featured" data-reveal>
       <div>
         <div class="card__top">
-          <span class="card__domain">Flagship Research · IEEE 2024</span>
+          <span class="card__domain">Flagship Research</span>
           <span class="card__idx">P / 01</span>
         </div>
         <h3>Rolling-Contact Joints for Surgical Manipulators</h3>
@@ -1027,7 +1025,7 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
       <p>Deployed Unitree's open-source teleoperation stack driving a G1 humanoid in MuJoCo at 30 Hz from a $300 consumer headset. I built the enabling layer — WSL2 mirrored networking, the SSL certificates WebXR requires, the C++ MuJoCo build and launch orchestration — and debugged latency and connection recovery stage by stage across the WebXR → WebRTC → IK → DDS → simulator chain. Built as demonstration-data infrastructure for imitation learning.</p>
       <div class="card__metrics">
         <span class="chip">6-DoF pose mapping</span>
-        <span class="chip">VLA data collection</span>
+        <span class="chip">Demo data recording</span>
       </div>
       <div class="card__tags"><span>Unitree G1</span><span>Meta Quest 2</span><span>MuJoCo</span><span>WSL2</span><span>Teleoperation</span></div>
       <a class="card__link" href="https://github.com/pradeepsuryad/Xr_quest2_Unitree" target="_blank" rel="noopener">
@@ -1133,7 +1131,7 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
         <span class="demo__tag demo__tag--ember">Mechanism Design</span>
         <h3>Rolling-Contact vs Revolute</h3>
       </div>
-      <p class="demo__desc">My published result, made tactile. Flex the joint and compare a sliding revolute pivot against a rolling-contact joint — watch the contact sliding (the source of friction &amp; wear) and the instantaneous center of rotation diverge.</p>
+      <p class="demo__desc">My research, made tactile. Flex the joint and compare a sliding revolute pivot against a rolling-contact joint — watch the contact sliding (the source of friction &amp; wear) and the instantaneous center of rotation diverge.</p>
       <div class="demo__stage"><canvas id="rcjCanvas"></canvas></div>
       <div class="demo__readout">
         <span>Flex <b id="rcjAngle">0°</b></span>
@@ -1264,7 +1262,7 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
     <div class="cap" data-reveal>
       <div class="cap__h"><span class="no">03</span> Simulation &amp; Learning</div>
       <div class="cap__list">
-        <span>MuJoCo</span><span>Isaac Sim</span><span>Gazebo</span><span>SE(3) IK · RCM</span><span>Reinforcement learning</span><span>PyTorch</span><span>Sim-to-real</span><span>VLA / foundation models</span>
+        <span>MuJoCo</span><span>Isaac Sim</span><span>Gazebo</span><span>SE(3) IK · RCM</span><span>Reinforcement learning</span><span>PyTorch</span><span>Sim-to-real</span>
       </div>
     </div>
     <div class="cap" data-reveal>
