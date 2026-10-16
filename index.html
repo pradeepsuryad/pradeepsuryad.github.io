@@ -428,6 +428,9 @@ a{ color:inherit; text-decoration:none; }
 /* rolling-contact-joint micro animation for the featured card */
 .rcj{ display:grid; place-items:center; min-height:190px; }
 .rcj svg{ width:100%; max-width:300px; height:auto; }
+.card__media{ margin:0; display:grid; gap:10px; align-content:center; }
+.card__media img{ width:100%; height:auto; border-radius:10px; border:1px solid var(--line-2); }
+.card__media figcaption{ color:var(--steel-2); font-size:.82rem; }
 .rcj .disc{ transform-origin:center; }
 .rcj .roll-a{ animation:rollA 5s linear infinite; transform-box:fill-box; transform-origin:center; }
 .rcj .roll-b{ animation:rollB 5s linear infinite; transform-box:fill-box; transform-origin:center; }
@@ -815,11 +818,11 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
 
   <div class="readout" aria-hidden="true">
     <div class="readout__inner">
+      <span class="readout__item">TROCAR ERROR <b class="em">55×↓</b></span>
+      <span class="readout__item">PATH ERROR <b>135×↓</b></span>
+      <span class="readout__item">OPENARM <b>3 PRs MERGED</b></span>
       <span class="readout__item">PEAK TORQUE <b class="em">−73%</b></span>
       <span class="readout__item">JOINT FRICTION <b>20×↓</b></span>
-      <span class="readout__item">TRACKING ERROR <b class="em">−64%</b></span>
-      <span class="readout__item">DETECTION <b>95%</b></span>
-      <span class="readout__item">NAV ROBUSTNESS <b>+30%</b></span>
     </div>
   </div>
 
@@ -939,12 +942,12 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
       <div class="phase__node">05</div>
       <div class="phase__rail"><span class="tag">CURRENT</span> · Surgical Robotics Research <span class="phase__pill">NOW</span></div>
       <h3>Where the machine meets the body <span>· Rolling-contact joints &amp; surgical IK</span></h3>
-      <p>My core research: rolling-contact joints with Kevlar-49 tendons that crush conventional revolute architectures, controlled by pole placement and a Luenberger observer. Alongside it, SE(3) inverse kinematics with a gaze constraint in MuJoCo, and Quest-2 → Unitree G1 teleoperation — building toward foundation-model and VLA-driven manipulation.</p>
+      <p>My core research: rolling-contact joints with Kevlar-49 tendons that crush conventional revolute architectures, controlled by pole placement and a Luenberger observer. Alongside it: joint-space virtual fixtures for surgical robots, merged contributions to Enactic's OpenArm, SE(3) inverse kinematics with a gaze constraint in MuJoCo, and Quest-2 → Unitree G1 teleoperation — building toward foundation-model and VLA-driven manipulation.</p>
       <div class="phase__metrics">
         <span class="chip">Peak torque <b>−73%</b></span>
         <span class="chip">Tracking error <b>−64%</b></span>
         <span class="chip">Friction <b>20×↓</b></span>
-        <span class="chip">Gaze IK · MuJoCo · teleoperation</span>
+        <span class="chip">Virtual fixtures · Gaze IK · MuJoCo · teleoperation</span>
       </div>
     </div>
   </div>
@@ -964,8 +967,94 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
     <article class="card card--wide card--featured" data-reveal>
       <div>
         <div class="card__top">
-          <span class="card__domain">Flagship Research</span>
+          <span class="card__domain">Flagship · Surgical Robotics</span>
           <span class="card__idx">P / 01</span>
+        </div>
+        <h3>ActiveGuide: Surgical Virtual Fixtures in Joint Space</h3>
+        <p>Safety walls and guidance paths for surgical robots, enforced as hard constraints in one quadratic program per control step, on a Franka Panda and a simulated dVRK PSM in MuJoCo. Holding the trocar in joint space keeps it to 0.50 mm, where a fixture on the tool tip alone levers the shaft 27 mm out of the port. Walls baked from a synthetic organ mesh keep the tool out of the organ, where a sphere approximation lets it 0.68 mm in. 135 tests run in CI, and every number in its README comes from committed demo output.</p>
+        <div class="card__metrics">
+          <span class="chip">Trocar <b>0.50 mm</b> vs 27.35 mm</span>
+          <span class="chip">Path error <b>135×↓</b></span>
+          <span class="chip">PSM remote centre <b>0.013 mm</b></span>
+        </div>
+        <div class="card__tags"><span>Quadratic programming</span><span>MuJoCo</span><span>dVRK PSM</span><span>Franka Panda</span><span>Signed distance fields</span><span>Python</span></div>
+        <a class="card__link" href="https://github.com/pradeepsuryad/ActiveGuide" target="_blank" rel="noopener">
+          View on GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+      <figure class="card__media">
+        <img src="assets/activeguide-cartesian-vs-qp.gif" width="720" height="287" loading="lazy" alt="Side by side, the same task: with Cartesian projection (left) the instrument shaft levers out of the trocar; with the joint-space QP (right) it stays in the port.">
+        <figcaption>Same task and fixtures: Cartesian projection (left) vs. the joint-space QP (right).</figcaption>
+      </figure>
+    </article>
+
+    <article class="card" data-reveal>
+      <div class="card__top"><span class="card__domain">Open Source · Enactic OpenArm</span><span class="card__idx">P / 02</span></div>
+      <h3>Merged Contributions to Enactic's OpenArm</h3>
+      <p>Fixes to the ROS 2 stack of OpenArm, Enactic's open-source humanoid arm: a can_fd launch argument through bringup and MoveIt, a fix for OpenArm 2.0 silently ignoring its CAN-interface launch arguments, and a bringup README brought up to date, each tested with real ROS 2 Jazzy launches. A fix that brings back namespaced controllers (arm_prefix) is submitted.</p>
+      <div class="card__metrics">
+        <span class="chip"><b>3</b> PRs merged</span>
+        <span class="chip">openarm_ros2 · openarm_description</span>
+      </div>
+      <div class="card__tags"><span>ROS 2 Jazzy</span><span>ros2_control</span><span>MoveIt 2</span><span>xacro / URDF</span><span>CAN-FD</span></div>
+      <a class="card__link" href="https://github.com/search?q=org%3Aenactic+author%3Apradeepsuryad&amp;type=pullrequests" target="_blank" rel="noopener">
+        View the pull requests
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+      </a>
+    </article>
+
+    <article class="card" data-reveal>
+      <div class="card__top"><span class="card__domain">Reinforcement Learning · Open Source</span><span class="card__idx">P / 03</span></div>
+      <h3>Hierarchical RL for Surgical Tissue Retraction</h3>
+      <p>Four deep-RL algorithms on a four-phase tissue-retraction task, five seeds each. Hierarchical skill chaining (ViSkill) finished at 64% success against 11–30% for SAC, DDPG and DEX, and over the last 50k steps every ViSkill run beat every baseline run. Re-checking my course paper against the code, I found its sub-policies were not isolated as claimed, fixed it, re-ran all 25 runs, and published an errata that CI checks against the code.</p>
+      <div class="card__metrics">
+        <span class="chip">ViSkill <b>64%</b> vs 11–30%</span>
+        <span class="chip"><b>25</b> runs · 5 seeds each</span>
+      </div>
+      <div class="card__tags"><span>PyTorch</span><span>SAC</span><span>DDPG</span><span>DEX</span><span>ViSkill</span><span>Gymnasium</span></div>
+      <a class="card__link" href="https://github.com/pradeepsuryad/hierrl-tissue-retract" target="_blank" rel="noopener">
+        View on GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+      </a>
+    </article>
+
+    <article class="card" data-reveal>
+      <div class="card__top"><span class="card__domain">Surgical · Open Source</span><span class="card__idx">P / 04</span></div>
+      <h3>Surgical Endoscope Gaze IK in MuJoCo</h3>
+      <p>A from-scratch SE(3) Newton-Raphson IK solver driving a 7-DoF Franka Panda in MuJoCo along a circular endoscope trajectory while aiming the camera at a fixed tissue target (a gaze constraint), with null-space redundancy resolution. Tracking is sub-millimetre for ~80% of the lap, then diverges as q1 reaches its joint limit.</p>
+      <div class="card__metrics">
+        <span class="chip">SE(3) Lie-group IK</span>
+        <span class="chip">Gaze constraint</span>
+        <span class="chip">Franka Panda</span>
+      </div>
+      <div class="card__tags"><span>MuJoCo</span><span>Newton-Raphson Jacobian</span><span>Damped least-squares</span><span>Python</span></div>
+      <a class="card__link" href="https://github.com/pradeepsuryad/surgical-endoscope-gaze-ik" target="_blank" rel="noopener">
+        View on GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+      </a>
+    </article>
+
+    <article class="card" data-reveal>
+      <div class="card__top"><span class="card__domain">Humanoids · Teleoperation</span><span class="card__idx">P / 05</span></div>
+      <h3>Unitree G1 Teleoperation via Meta Quest 2</h3>
+      <p>Deployed Unitree's open-source teleoperation stack driving a G1 humanoid in MuJoCo at 30 Hz from a $300 consumer headset. I built the enabling layer — WSL2 mirrored networking, the SSL certificates WebXR requires, the C++ MuJoCo build and launch orchestration — and debugged latency and connection recovery stage by stage across the WebXR → WebRTC → IK → DDS → simulator chain. Built as demonstration-data infrastructure for imitation learning.</p>
+      <div class="card__metrics">
+        <span class="chip">6-DoF pose mapping</span>
+        <span class="chip">Demo data recording</span>
+      </div>
+      <div class="card__tags"><span>Unitree G1</span><span>Meta Quest 2</span><span>MuJoCo</span><span>WSL2</span><span>Teleoperation</span></div>
+      <a class="card__link" href="https://github.com/pradeepsuryad/Xr_quest2_Unitree" target="_blank" rel="noopener">
+        View on GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+      </a>
+    </article>
+
+    <article class="card card--wide" data-reveal>
+      <div>
+        <div class="card__top">
+          <span class="card__domain">Hardware Research</span>
+          <span class="card__idx">P / 06</span>
         </div>
         <h3>Rolling-Contact Joints for Surgical Manipulators</h3>
         <p>Surfaces that roll instead of pivot — virtually eliminating sliding friction and wear, with a variable center of rotation that mimics the moving axes of human knee and finger joints. A full non-linear dynamic model (tendon elasticity, friction, backlash) drives a pole-placement controller and a Luenberger observer running 3× faster than the loop. The mechanism at the heart of high-dexterity, sterilizable surgical grippers.</p>
@@ -1004,38 +1093,22 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
     </article>
 
     <article class="card" data-reveal>
-      <div class="card__top"><span class="card__domain">Surgical · Open Source</span><span class="card__idx">P / 02</span></div>
-      <h3>Surgical Endoscope Gaze IK in MuJoCo</h3>
-      <p>A from-scratch SE(3) Newton-Raphson IK solver driving a 7-DoF Franka Panda in MuJoCo along a circular endoscope trajectory while aiming the camera at a fixed tissue target (a gaze constraint), with null-space redundancy resolution. Tracking is sub-millimetre for ~80% of the lap, then diverges as q1 reaches its joint limit.</p>
+      <div class="card__top"><span class="card__domain">Surgical Vision · Open Source</span><span class="card__idx">P / 07</span></div>
+      <h3>Endoscopic Instrument &amp; Tissue Tracking</h3>
+      <p>Two perception pipelines for the surgical field: 6-DoF instrument pose tracking on the MICCAI EndoVis benchmark — handling occlusion, specular reflection, and texture-poor surfaces — and a Farneback dense-optical-flow tracker that recovers cardiac cycle and heart rate from monocular endoscopic video. The vision backbone for an autonomous, self-positioning endoscope.</p>
       <div class="card__metrics">
-        <span class="chip">SE(3) Lie-group IK</span>
-        <span class="chip">Gaze constraint</span>
-        <span class="chip">Franka Panda</span>
+        <span class="chip">6-DoF pose</span>
+        <span class="chip">Dense optical flow</span>
       </div>
-      <div class="card__tags"><span>MuJoCo</span><span>Newton-Raphson Jacobian</span><span>Damped least-squares</span><span>Python</span></div>
-      <a class="card__link" href="https://github.com/pradeepsuryad/surgical-endoscope-gaze-ik" target="_blank" rel="noopener">
+      <div class="card__tags"><span>EndoVis</span><span>Farneback</span><span>Active vision</span><span>OpenCV</span><span>Medical imaging</span></div>
+      <a class="card__link" href="https://github.com/pradeepsuryad/Autonomous-Endoscope-Assistant-Active-Vision-" target="_blank" rel="noopener">
         View on GitHub
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
       </a>
     </article>
 
     <article class="card" data-reveal>
-      <div class="card__top"><span class="card__domain">Humanoids · Teleoperation</span><span class="card__idx">P / 03</span></div>
-      <h3>Unitree G1 Teleoperation via Meta Quest 2</h3>
-      <p>Deployed Unitree's open-source teleoperation stack driving a G1 humanoid in MuJoCo at 30 Hz from a $300 consumer headset. I built the enabling layer — WSL2 mirrored networking, the SSL certificates WebXR requires, the C++ MuJoCo build and launch orchestration — and debugged latency and connection recovery stage by stage across the WebXR → WebRTC → IK → DDS → simulator chain. Built as demonstration-data infrastructure for imitation learning.</p>
-      <div class="card__metrics">
-        <span class="chip">6-DoF pose mapping</span>
-        <span class="chip">Demo data recording</span>
-      </div>
-      <div class="card__tags"><span>Unitree G1</span><span>Meta Quest 2</span><span>MuJoCo</span><span>WSL2</span><span>Teleoperation</span></div>
-      <a class="card__link" href="https://github.com/pradeepsuryad/Xr_quest2_Unitree" target="_blank" rel="noopener">
-        View on GitHub
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
-      </a>
-    </article>
-
-    <article class="card" data-reveal>
-      <div class="card__top"><span class="card__domain">Autonomy &amp; SLAM</span><span class="card__idx">P / 04</span></div>
+      <div class="card__top"><span class="card__domain">Autonomy &amp; SLAM</span><span class="card__idx">P / 08</span></div>
       <h3>Point-LIO SLAM on SPOT &amp; NUANCE</h3>
       <p>A robust localization stack deployed on two real platforms — the NUANCE self-driving car and Boston Dynamics SPOT. Point-LIO SLAM fuses Velodyne LiDAR with vision; an EKF blends IMU and GPS for drift-free trajectories; Monte-Carlo Localization holds up where features run thin. Full sensor calibration: camera-LiDAR extrinsics, IMU bias, magnetometer hard/soft-iron correction.</p>
       <div class="card__metrics">
@@ -1051,7 +1124,7 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
     </article>
 
     <article class="card" data-reveal>
-      <div class="card__top"><span class="card__domain">Control &amp; Simulation</span><span class="card__idx">P / 05</span></div>
+      <div class="card__top"><span class="card__domain">Control &amp; Simulation</span><span class="card__idx">P / 09</span></div>
       <h3>Tendon-Driven Manipulator Control + GUI</h3>
       <p>A linearized continuous-time model with full controllability and observability, driven by pole-placement state feedback and a Luenberger observer — visualized through a MATLAB GUI that compares joint architectures in real time under tissue-contact disturbance, with Kevlar-49 vs Nylon-66 material analysis.</p>
       <div class="card__metrics">
@@ -1067,22 +1140,7 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
     </article>
 
     <article class="card" data-reveal>
-      <div class="card__top"><span class="card__domain">Surgical Vision · Open Source</span><span class="card__idx">P / 06</span></div>
-      <h3>Endoscopic Instrument &amp; Tissue Tracking</h3>
-      <p>Two perception pipelines for the surgical field: 6-DoF instrument pose tracking on the MICCAI EndoVis benchmark — handling occlusion, specular reflection, and texture-poor surfaces — and a Farneback dense-optical-flow tracker that recovers cardiac cycle and heart rate from monocular endoscopic video. The vision backbone for an autonomous, self-positioning endoscope.</p>
-      <div class="card__metrics">
-        <span class="chip">6-DoF pose</span>
-        <span class="chip">Dense optical flow</span>
-      </div>
-      <div class="card__tags"><span>EndoVis</span><span>Farneback</span><span>Active vision</span><span>OpenCV</span><span>Medical imaging</span></div>
-      <a class="card__link" href="https://github.com/pradeepsuryad/Autonomous-Endoscope-Assistant-Active-Vision-" target="_blank" rel="noopener">
-        View on GitHub
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
-      </a>
-    </article>
-
-    <article class="card" data-reveal>
-      <div class="card__top"><span class="card__domain">Embedded &amp; Mixed-Signal</span><span class="card__idx">P / 07</span></div>
+      <div class="card__top"><span class="card__domain">Embedded &amp; Mixed-Signal</span><span class="card__idx">P / 10</span></div>
       <h3>Capacitive Gaze Sensing for AR Glasses</h3>
       <p>Research in Northeastern's AR/VR Lab: a mixed-signal Altium PCB for capacitive eye-tracking — transimpedance front-end, differential measurement, separated analog/digital grounds — paired with interrupt-driven C++ firmware on a Teensy (Cortex-M7) hitting a sub-millisecond deterministic control loop. Validated across 100+ HIL regression cycles.</p>
       <div class="card__metrics">
@@ -1221,10 +1279,14 @@ input[type="range"]::-moz-range-thumb{ width:16px; height:16px; border-radius:50
 
       <h3 class="rcol__h rcol__h--gap">Open-Source Robotics</h3>
       <div class="repos">
+        <a class="repo" href="https://github.com/search?q=org%3Aenactic+author%3Apradeepsuryad&amp;type=pullrequests" target="_blank" rel="noopener">OpenArm PRs (Enactic)</a>
+        <a class="repo" href="https://github.com/pradeepsuryad/ActiveGuide" target="_blank" rel="noopener">ActiveGuide</a>
+        <a class="repo" href="https://github.com/pradeepsuryad/hierrl-tissue-retract" target="_blank" rel="noopener">hierrl-tissue-retract</a>
         <a class="repo" href="https://github.com/pradeepsuryad/surgical-endoscope-gaze-ik" target="_blank" rel="noopener">surgical-endoscope-gaze-ik</a>
         <a class="repo" href="https://github.com/pradeepsuryad/Xr_quest2_Unitree" target="_blank" rel="noopener">Xr_quest2_Unitree</a>
         <a class="repo" href="https://github.com/pradeepsuryad/Autonomous-Endoscope-Assistant-Active-Vision-" target="_blank" rel="noopener">Autonomous-Endoscope-Assistant</a>
         <a class="repo" href="https://github.com/pradeepsuryad/heart-beat-tracker" target="_blank" rel="noopener">heart-beat-tracker</a>
+        <a class="repo" href="https://github.com/pradeepsuryad/arm-core" target="_blank" rel="noopener">arm-core</a>
       </div>
     </div>
   </div>
